@@ -1,0 +1,28 @@
+import {GoogleOAuthProvider} from '@react-oauth/google';
+
+After that wrap your entire application with "<GoogleOAuthProvider>"
+it would take in the following props:
+    clientId=""
+
+To create your google credentials, you can go to console.cloud.google.com
+create a new project, select the project, open the sidebar, go to API and services, then go to credentials.
+configure your oauth consent screen, choose external, click create, enter app name and email, and fill in developers contact info, click save and continue. scopes coould be empty, click save and continue, including for test users. 
+in the dashboard, click on credentials, create credentials, choose oauthclientid, app type would be webapp, name would be name of the app, then important step:
+add javascript origins(would be http://localhost:3000).
+also add them as the authorized redirect urls,then click create. Then copy it.
+
+You can add it as an environment variable in .env file.
+In the .env file, you can do stuff like:
+GOOGLE_API_TOKEN = <clientId>
+
+
+Where necessary, you would import {GoogleLogin, googleLogout} from @react-oauth/google;
+
+
+
+
+
+
+
+
+
