@@ -5,8 +5,8 @@ import Home from "./layouts/Home";
 function App() {
   return (
     <Routes>
-      <Route exact path="/login" element={<Login />} />
-      <Route path="/" element={<Home />} />
+      <Route exact path='/login' element={<Login />} />
+      <Route path='/*' element={<Home />} />
     </Routes>
   );
 }

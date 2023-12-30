@@ -19,6 +19,30 @@ GOOGLE_API_TOKEN = <clientId>
 Where necessary, you would import {GoogleLogin, googleLogout} from @react-oauth/google;
 
 
+When using sanity, you create your backend first and make your schemas.
+Then you go to your frontend and install "@sanity/client". Do this with the npm package manager.
+
+Now you make a client.js file with the following configurations:
+
+import { createClient } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+
+export const client = createClient({
+  projectId: "ur project ID which could be in a dotenv file",
+  dataset: "production",
+  apiVersion: "2023-12-03",
+  useCdn: true,
+  token: "Your token which you should go to sanity manage and get a token, you can also put this in a dotenv file.",
+});
+
+
+//Below is for image.
+const builder = imageUrlBuilder(client);
+export const urlFor = (source) => {
+  builder.image(source);
+};
+
+You then import "client" in the necessary file and use it where it needs to be. You can now use all the methods associated with it. Eg, is client.createIfNotExist, client.fetch, etc. Note that these are all promises, meaning that you can tackle on a .then method after it is done resolving.
 
 
 
